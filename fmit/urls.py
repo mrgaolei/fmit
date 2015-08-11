@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+	url(r'^$', 'news.views.home'),
+    url(r'^news/', include('news.urls', namespace='news')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
