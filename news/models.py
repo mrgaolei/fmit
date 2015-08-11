@@ -23,6 +23,7 @@ class Source(models.Model):
 	renum_introduce = models.SmallIntegerField(u"正则结果：简介", default=6)
 	renum_pubdate = models.SmallIntegerField(u"正则结果：文章时间", default=4)
 	renum_publisher = models.SmallIntegerField(u"正则结果：撰稿人", default=3)
+	re_content = models.TextField(u"内容正则")
 
 	def __unicode__(self):
 		return self.name
@@ -31,29 +32,47 @@ class Source(models.Model):
 		import httplib2
 		import re
 		if not self.active and self.running:
-			return
+			return 0
 		self.running = True
 		self.save()
 		h = httplib2.Http()
 		resp, content = h.request(self.url_list)
-		print resp, content
+		# print resp, content
 		if resp['status'] == '200':
 			pass
-		# items = re.findall(r"<div class=\"item\" id=\"J_allItem_(\w*?)\">.*?<div class=\"title\">\s*?<a target=\"_blank\" href=\"(.*?)\">(.*?)</a>\s*?<div class=\"tj\">\s*?<span>(.*?)\s发布于<em>(.*?)</em>.*?<img width=\"\w*?\" height=\"\w*?\" src=\"(.*?)\".*?<span class=\"newsinfo\"><p>(.*?)</p>", content, re.DOTALL)
 		items = re.findall(str(self.re_list), content, re.DOTALL)
+		total = 0
 		for item in items:
+			try:
+				News.objects.get(source=self, newsid=item[self.renum_newsid])
+				continue
+			except News.DoesNotExist:
+				pass
 			news = News()
 			news.source = self
 			news.newsid = item[self.renum_newsid]
-			news.url = item[self.renum_url]
+			if self.reopt_url_isrelative:
+				news.url = self.url + item[self.renum_url]
+			else:
+				news.url = item[self.renum_url]
 			news.title = item[self.renum_title]
+			news.thumb_url = item[self.renum_thumb]
 			news.introduce = item[self.renum_introduce]
 			news.pubdate = item[self.renum_pubdate]
 			news.publisher = item[self.renum_publisher]
+
+			# fetch content
+			resp, content = h.request(news.url)
+			match = re.search(self.re_content, content, re.DOTALL)
+			if match:
+				news.content = match.groups()[0]
+
 			news.save()
+			total += 1
 		self.running = False
 		self.updated = timezone.localtime(timezone.now())
 		self.save()
+		return total
 
 	class Meta:
 		verbose_name = u"数据来源"
@@ -65,6 +84,7 @@ class News(models.Model):
 	url = models.URLField(u"原文URL")
 	title = models.CharField(u"标题", max_length=250, db_index=True)
 	thumb = models.ImageField(u"封面图", upload_to="news_thumb")
+	thumb_url = models.URLField(u"封面图URL")
 	introduce = models.CharField(u"简介", max_length=250)
 	pubdate = models.DateTimeField(u"新闻时间")
 	publisher = models.CharField(u"撰稿人", max_length=100)

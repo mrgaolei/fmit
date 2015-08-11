@@ -12,8 +12,10 @@ class SourceAdmin(admin.ModelAdmin):
 	actions = ['make_sync']
 
 	def make_sync(self, request, queryset):
+		total = 0
 		for source in queryset:
-			source.sync()
+			total += source.sync()
+		self.message_user(request, u"同步 %d 条新闻" % total)
 	make_sync.short_description = u"同步新闻"
 
 @admin.register(News)
