@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from decouple import config
+from dj_database_url import parse as db_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ckksf&av48i=nu-ae%1*fouw_%@tt(t##@p2@p6wlsv5q#&vd*'
+SECRET_KEY = config('FMIT_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('FMIT_DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -77,11 +79,9 @@ WSGI_APPLICATION = 'fmit.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fmit',
-        'USER': 'root',
-    }
+    'default': config(
+        'FMIT_DATABASE_URL',
+        cast=db_url)
 }
 
 
