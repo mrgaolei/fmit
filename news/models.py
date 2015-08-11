@@ -2,7 +2,13 @@
 from django.db import models
 from django.utils import timezone
 
+from tinymce.models import HTMLField
+import re
+
 # Create your models here.
+
+def strip_html(html):
+	return re.sub(r'<.*?>', '', html)
 
 class Source(models.Model):
 	key = models.CharField(u"来源站ID", max_length=50, primary_key=True)
@@ -30,7 +36,6 @@ class Source(models.Model):
 
 	def sync(self):
 		import httplib2
-		import re
 		if not self.active and self.running:
 			return 0
 		self.running = True
@@ -55,9 +60,9 @@ class Source(models.Model):
 				news.url = self.url + item[self.renum_url]
 			else:
 				news.url = item[self.renum_url]
-			news.title = item[self.renum_title]
+			news.title = strip_html(item[self.renum_title])
 			news.thumb_url = item[self.renum_thumb]
-			news.introduce = item[self.renum_introduce]
+			news.introduce = strip_html(item[self.renum_introduce])
 			news.pubdate = item[self.renum_pubdate]
 			news.publisher = item[self.renum_publisher]
 
@@ -80,17 +85,19 @@ class Source(models.Model):
 
 class News(models.Model):
 	source = models.ForeignKey(Source, verbose_name=u"来源站")
-	newsid = models.BigIntegerField(u"来源站文章ID")
+	newsid = models.IntegerField(u"来源站文章ID")
 	url = models.URLField(u"原文URL")
 	title = models.CharField(u"标题", max_length=250, db_index=True)
 	thumb = models.ImageField(u"封面图", upload_to="news_thumb")
 	thumb_url = models.URLField(u"封面图URL")
 	introduce = models.CharField(u"简介", max_length=250)
-	pubdate = models.DateTimeField(u"新闻时间")
+	pubdate = models.DateTimeField(u"新闻时间", db_index=True)
 	publisher = models.CharField(u"撰稿人", max_length=100)
-	content = models.TextField(u"文章内容")
+	content = HTMLField(u"文章内容")
 	created = models.DateTimeField(u"创建时间", auto_now_add=True)
 	updated = models.DateTimeField(u"更新时间", auto_now=True)
+	support = models.IntegerField(u"支持数", default=0)
+	oppose = models.IntegerField(u"反对数", default=0)
 
 	def __unicode__(self):
 		return self.title
@@ -98,4 +105,5 @@ class News(models.Model):
 	class Meta:
 		verbose_name = u"新闻"
 		verbose_name_plural = verbose_name
+		ordering = ['-pubdate']
 		unique_together = (("source", "newsid"),)

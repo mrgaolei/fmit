@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'news',
 )
 
@@ -102,3 +103,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR + 'static'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'simple',
+    'width': 900,
+    'height': 400,
+}

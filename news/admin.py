@@ -20,7 +20,9 @@ class SourceAdmin(admin.ModelAdmin):
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-	list_display = ('title', 'source', 'newsid', 'created', 'updated')
+	list_display = ('title', 'source', 'newsid', 'pubdate', 'created', 'updated')
+	list_filter = ['source',]
+
 
 	def get_readonly_fields(self, request, obj=None):
 		if obj:
