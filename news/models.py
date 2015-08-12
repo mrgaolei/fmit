@@ -65,14 +65,17 @@ class Source(models.Model):
 			news.introduce = strip_html(item[self.renum_introduce])
 			news.pubdate = item[self.renum_pubdate]
 			news.publisher = item[self.renum_publisher]
+			news.save()
 
 			# fetch content
 			resp, content = h.request(news.url)
 			match = re.search(self.re_content, content, re.DOTALL)
 			if match:
-				news.content = match.groups()[0]
+				content = Content()
+				content.news = news
+				content.content = match.groups()[0]
+				content.save()
 
-			news.save()
 			total += 1
 		self.running = False
 		self.updated = timezone.localtime(timezone.now())
@@ -93,7 +96,6 @@ class News(models.Model):
 	introduce = models.CharField(u"简介", max_length=250)
 	pubdate = models.DateTimeField(u"新闻时间", db_index=True)
 	publisher = models.CharField(u"撰稿人", max_length=100)
-	content = HTMLField(u"文章内容")
 	created = models.DateTimeField(u"创建时间", auto_now_add=True)
 	updated = models.DateTimeField(u"更新时间", auto_now=True)
 	support = models.IntegerField(u"支持数", default=0)
@@ -107,3 +109,14 @@ class News(models.Model):
 		verbose_name_plural = verbose_name
 		ordering = ['-pubdate']
 		unique_together = (("source", "newsid"),)
+
+class Content(models.Model):
+	news = models.OneToOneField(News, verbose_name=u"新闻")
+	content = HTMLField(u"文章内容")
+
+	def __unicode__(self):
+		return self.news.title
+
+	class Meta:
+		verbose_name = u"新闻内容"
+		verbose_name_plural = verbose_name

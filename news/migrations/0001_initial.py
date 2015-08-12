@@ -12,6 +12,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Content',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content', tinymce.models.HTMLField(verbose_name='\u6587\u7ae0\u5185\u5bb9')),
+            ],
+            options={
+                'verbose_name': '\u65b0\u95fb\u5185\u5bb9',
+                'verbose_name_plural': '\u65b0\u95fb\u5185\u5bb9',
+            },
+        ),
+        migrations.CreateModel(
             name='News',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -23,7 +34,6 @@ class Migration(migrations.Migration):
                 ('introduce', models.CharField(max_length=250, verbose_name='\u7b80\u4ecb')),
                 ('pubdate', models.DateTimeField(verbose_name='\u65b0\u95fb\u65f6\u95f4', db_index=True)),
                 ('publisher', models.CharField(max_length=100, verbose_name='\u64b0\u7a3f\u4eba')),
-                ('content', tinymce.models.HTMLField(verbose_name='\u6587\u7ae0\u5185\u5bb9')),
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='\u521b\u5efa\u65f6\u95f4')),
                 ('updated', models.DateTimeField(auto_now=True, verbose_name='\u66f4\u65b0\u65f6\u95f4')),
                 ('support', models.IntegerField(default=0, verbose_name='\u652f\u6301\u6570')),
@@ -67,6 +77,11 @@ class Migration(migrations.Migration):
             model_name='news',
             name='source',
             field=models.ForeignKey(verbose_name='\u6765\u6e90\u7ad9', to='news.Source'),
+        ),
+        migrations.AddField(
+            model_name='content',
+            name='news',
+            field=models.OneToOneField(verbose_name='\u65b0\u95fb', to='news.News'),
         ),
         migrations.AlterUniqueTogether(
             name='news',

@@ -1,15 +1,30 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from rest_framework import viewsets
 
 from .models import News
+from .serializers import NewsSerializer
+
 # Create your views here.
 
 def home(request):
 	return news_list(request)
 
-def news_list(request):
+def news_list(request, page=1):
 	list = News.objects.all()
+	paginator = Paginator(list, 20)
+	try:
+		list = paginator.page(page)
+	except PageNotAnInteger:
+		list = paginator.page(1)
+	except EmptyPage:
+		list = paginator.page(paginator.num_pages)
 	return render(request, 'news/list.html', {'list': list})
 
 def news_detail(request, id):
 	news = News.objects.get(pk=id)
 	return render(request, 'news/detail.html', {'news': news})
+
+class NewsViewSet(viewsets.ReadOnlyModelViewSet):
+	queryset = News.objects.all()
+	serializer_class = NewsSerializer
