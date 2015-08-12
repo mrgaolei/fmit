@@ -3,7 +3,7 @@
 <ul>
 {% for news in list %}
 <li>
-	<a href="{% url 'news:news_detail' id=news.pk %}">{{ news.title }}</a>
+	<a href="{% url 'news:news_detail' id=news.pk %}" class="newsListLink">{{ news.title }}</a>
 </li>
 {% endfor %}
 </ul>
