@@ -29,6 +29,7 @@ DEBUG = config('FMIT_DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -39,8 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django_comments',
     'tinymce',
     'rest_framework',
+    'audience',
     'news',
 )
 
@@ -87,6 +91,12 @@ DATABASES = {
         cast=db_url)
 }
 
+# CACHES = {
+#     'default': {
+#         'BACKEND': config('FMIT_CACHES_BACKEND', default='django.core.cache.backends.memcached.MemcachedCache'),
+#         'LOCATION': config('FMIT_CACHES_LOCATION', default='127.0.0.1:11211')
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

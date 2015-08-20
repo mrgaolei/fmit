@@ -1,5 +1,14 @@
+{% extends "base.html" %}
+{% load comments %}
+
+{% block content %}
 <h1>{{ news.title }}</h1>
 
 {{ news.introduce }}
 
-{{ news.content|safe }}
+{{ news.content.content|safe }}
+
+{% render_comment_form for news %}
+{% render_comment_list for news %}
+
+{% endblock %}
