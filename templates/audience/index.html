@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul>
+{% for third in third_auth %}
+<li><a href="{% url 'audience:auth_redirect' auth_type=third|first %}">{{ third|last }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
