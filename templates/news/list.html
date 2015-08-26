@@ -6,11 +6,17 @@
 {# {% static "fmit/c/base.css" %} #}
 
 {# {% block content %} #}
-<ul>
-{% for news in list %}
-<li>
-	<a href="{% url 'news:news_detail' id=news.pk %}" class="newsListLink">{{ news.title }}</a>
-</li>
-{% endfor %}
-</ul>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <ul  class="list-group">
+    {% for news in list %}
+    <li class="list-group-item">
+      <a href="{% url 'news:news_detail' id=news.pk %}" class="newsListLink">{{ news.title }}</a>
+    </li>
+    {% endfor %}
+    </ul>
 {% endblock %}
+  </div>
+  <div class="col-md-4"></div>
+</div>
