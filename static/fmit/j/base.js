@@ -1,1 +1,0 @@
-var fmit = true;

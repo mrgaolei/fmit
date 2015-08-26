@@ -1,4 +1,4 @@
-veny
+venv
 *.pyc
 .env
 node_modules
@@ -6,4 +6,3 @@ dist
 .tmp
 .sass-cache
 bower_components
-venv
