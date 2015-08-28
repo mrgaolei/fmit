@@ -6,7 +6,7 @@
 
 <div>{{ news.introduce }}</div>
 
-{# {{ news.content.content|safe }} #}
+{{ news.content.content|safe }}
 
 {% render_comment_form for news %}
 {# {% render_comment_list for news %} #}
