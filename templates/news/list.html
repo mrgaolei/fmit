@@ -17,4 +17,15 @@
   </div>
   <div class="col-md-4"></div>
 </div>
+
+<div class="pagination">
+{% if list.has_previous %}
+<a href="{% url 'news:news_list_page' page=list.previous_page_number %}">上一页</a>
+{% endif %}
+{{ list.number }} / {{ list.paginator.num_pages }}
+{% if list.has_next %}
+<a href="{% url 'news:news_list_page' page=list.next_page_number %}">下一页</a>
+{% endif %}
+</div>
+
 {% endblock %}
