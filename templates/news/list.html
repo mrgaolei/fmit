@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
+  <!--<div class="col-md-4"></div>-->
+  <div class="col-md-12">
     <ul  class="list-group">
     {% for news in list %}
-    <li class="list-group-item {% cycle 'row0' 'row1' %}">
+    <li class="list-group-item fmit-list {% cycle 'row0' 'row1' %}">
       <p><a href="{% url 'news:news_detail' id=news.pk %}" class="newsListLink">{{ news.title }}</a></p>
-      <span>{{ news.introduce }}</span>
-      <p>{{ news.pubdate }}</p>
+      <span class="newsListLinkContent">{{ news.introduce }}</span>
+      <p class="newsListFooter">{{ news.pubdate }}</p>
       <em>支持：{{ news.support }}</em><i>反对：{{ news.oppose }}</i>
     </li>
     {% endfor %}
     </ul>
   </div>
-  <div class="col-md-4"></div>
+  <!--<div class="col-md-4"></div>-->
 </div>
 
 <div class="pagination">
