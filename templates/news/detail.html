@@ -4,9 +4,13 @@
 {% block content %}
 <h1>{{ news.title }}</h1>
 
-<div class="news-content">{{ news.introduce }}</div>
+<div class="news-content">
+  {{ news.introduce }}
+</div>
 
-{{ news.content.content|safe }}
+<div class="news-content-safe">
+  {{ news.content.content|safe }}
+</div>
 
 {% render_comment_form for news %}
 {# {% render_comment_list for news %} #}
