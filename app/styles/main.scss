@@ -12,7 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+//  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -98,6 +98,9 @@ header{
   background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
   margin-bottom: 20px;
 }
+.fmit-list{
+  border: none;
+}
 .fmit-list .newsListLink{
   font-size: 20px;
   color: #006834;
@@ -118,4 +121,7 @@ header{
 }
 .news-content-safe img{
   width: 100%;
+}
+.nopadding{
+  padding: 0;
 }
