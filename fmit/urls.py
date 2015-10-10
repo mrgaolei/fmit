@@ -27,13 +27,13 @@ router.register(r'news', views.NewsViewSet)
 
 
 urlpatterns = [
-	url(r'^$', 'news.views.home'),
+    url(r'^$', 'news.views.home'),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^audience/', include('audience.urls', namespace='audience')),
 
     url(r'^comments/', include('django_comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^api/v3/', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
