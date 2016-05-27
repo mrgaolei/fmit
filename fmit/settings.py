@@ -118,6 +118,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
+AUTHENTICATION_BACKENDS = ('audience.backend.ThirdAuthBackend', 'django.contrib.auth.backends.ModelBackend',)
+
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'simple',
     'width': 900,

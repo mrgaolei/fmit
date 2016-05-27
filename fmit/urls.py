@@ -27,7 +27,7 @@ router.register(r'news', views.NewsViewSet)
 
 
 urlpatterns = [
-    url(r'^$', 'news.views.home'),
+    url(r'^$', views.home),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^audience/', include('audience.urls', namespace='audience')),
 

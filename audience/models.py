@@ -14,6 +14,7 @@ THIRDAUTH_CHOICES = (
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=u"用户")
     auth_type = models.SmallIntegerField(u"认证类型", choices=THIRDAUTH_CHOICES, default=WEIBO)
+    auth_uid = models.BigIntegerField(u"第三方UID")
     screen_name = models.CharField(u"昵称", max_length=255)
     access_token = models.CharField("access_token", max_length=255)
     expires_in = models.DateTimeField(u"token过期")
@@ -26,3 +27,4 @@ class Profile(models.Model):
     class Meta:
         verbose_name = u"用户档案"
         verbose_name_plural = verbose_name
+        unique_together = (('auth_type', 'auth_uid'),)
