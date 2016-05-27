@@ -8,6 +8,7 @@
     {% for news in list %}
     <li class="list-group-item fmit-list {% cycle 'row0' 'row1' %}">
       <p><a href="{% url 'news:news_detail' id=news.pk %}" class="newsListLink">{{ news.title }}</a></p>
+        {% if news.thumb %}<img src="{{ news.thumb.url }}" alt="{{ news.title }}" />{% endif %}
       <span class="newsListLinkContent">{{ news.introduce }}</span>
       <p class="newsListFooter">{{ news.pubdate }}</p>
       <em>支持：{{ news.support }}</em><i>反对：{{ news.oppose }}</i>

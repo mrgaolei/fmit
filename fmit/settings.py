@@ -118,6 +118,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
+MEDIA_ROOT = BASE_DIR + '/uploads'
+MEDIA_URL = config('FMIT_MEDIA_URL', default='/uploads/')
+
 AUTHENTICATION_BACKENDS = ('audience.backend.ThirdAuthBackend', 'django.contrib.auth.backends.ModelBackend',)
 
 TINYMCE_DEFAULT_CONFIG = {

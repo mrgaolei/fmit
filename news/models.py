@@ -1,4 +1,8 @@
 # coding=UTF-8
+import hashlib
+from urllib import urlretrieve
+
+from django.core.files import File
 from django.db import models
 from django.utils import timezone
 
@@ -67,6 +71,16 @@ class Source(models.Model):
             news.introduce = strip_html(item[self.renum_introduce])
             news.pubdate = item[self.renum_pubdate]
             news.publisher = item[self.renum_publisher]
+            # store thumb
+            if news.thumb_url:
+                try:
+                    result = urlretrieve(news.thumb_url)
+                    file_ext = result[0].split('.')[1]
+                    file = open(result[0], 'rb')
+                    news.thumb.save('%s.%s' % (hashlib.md5(file.read()).hexdigest(), file_ext),
+                                    File(file))
+                except IOError:
+                    pass
             news.save()
 
             # fetch content
@@ -124,3 +138,6 @@ class Content(models.Model):
     class Meta:
         verbose_name = u"新闻内容"
         verbose_name_plural = verbose_name
+
+
+
