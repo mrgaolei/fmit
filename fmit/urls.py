@@ -28,6 +28,7 @@ router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     url(r'^$', views.home),
+    url(r'^', include('django.contrib.auth.urls')),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^audience/', include('audience.urls', namespace='audience')),
 
