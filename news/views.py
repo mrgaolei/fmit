@@ -3,14 +3,21 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from rest_framework import viewsets
 from rest_framework.pagination import CursorPagination
 
-from .models import News
+from .models import News, Volume
 from .serializers import NewsSerializer
 
 # Create your views here.
 
 
 def home(request):
-    return news_list(request)
+    # coll
+    vol_coll = Volume.objects.filter(status=Volume.VOLUME_STATUS_COLLECT)
+    vol_release = Volume.objects.filter(status=Volume.VOLUME_STATUS_RELEASE)
+
+    return render(request, 'news/home.html', {
+        'vol_coll': vol_coll,
+        'vol_release': vol_release,
+    })
 
 
 def news_list(request, page=1):

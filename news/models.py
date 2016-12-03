@@ -140,4 +140,50 @@ class Content(models.Model):
         verbose_name_plural = verbose_name
 
 
+class MacSkill(models.Model):
+    subject = models.CharField(u"技巧标题", max_length=200)
+    cmd = models.CharField(u"Command Line", max_length=255, blank=True)
+    url = models.URLField(u"来源", blank=True)
 
+    class Meta:
+        verbose_name = u"mac技巧"
+
+
+class MacSkillContent(models.Model):
+    mac_skill = models.OneToOneField(MacSkill)
+    content = HTMLField(u"技巧内容")
+
+
+class Volume(models.Model):
+    VOLUME_STATUS_COLLECT = 0
+    VOLUME_STATUS_RECORD = 1
+    VOLUME_STATUS_RELEASE = 2
+    VOLUME_STATUS = (
+        (VOLUME_STATUS_COLLECT, u"话题征集中"),
+        (VOLUME_STATUS_RECORD, u"正在录音"),
+        (VOLUME_STATUS_RELEASE, u"已发布"),
+    )
+    vol = models.IntegerField(u"期")
+    subject = models.CharField(u"节目标题", max_length=200)
+    status = models.SmallIntegerField(u"状态", choices=VOLUME_STATUS, default=VOLUME_STATUS_COLLECT, db_index=True)
+    collect = models.CharField(u"征集文", max_length=255)
+    mac_skill = models.ForeignKey(MacSkill)
+    digi_rec = None
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return "FMiT.VOL$d %s" % (self.vol, self.subject)
+
+    class Meta:
+        verbose_name = u"节目"
+        ordering = ['-vol']
+
+
+class Information(models.Model):
+    volume = models.ForeignKey(Volume)
+    subject = models.CharField(u"新闻标题", max_length=200)
+    news = models.ForeignKey(News, blank=True, null=True)
+
+    def __unicode__(self):
+        return self.volume
