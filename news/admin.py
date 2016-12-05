@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import Source
 from .models import News
 from .models import Content
+from .models import Volume
 
 
 # Register your models here.
@@ -38,3 +39,7 @@ class NewsAdmin(admin.ModelAdmin):
             return ['source', 'newsid']
         else:
             return []
+
+@admin.register(Volume)
+class VolumeAdmin(admin.ModelAdmin):
+    pass
