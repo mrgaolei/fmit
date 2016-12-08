@@ -4,7 +4,7 @@
 <head lang="en">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="{% static "news/c/042fc0b4.main.css" %}"/>
+  <link rel="stylesheet" href="{% static "news/styles/main.css" %}"/>
   <title>FMiT 广播</title>
 </head>
 <body>
@@ -12,12 +12,22 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      {% block content %}
-      {% endblock %}
+      <h1>话题讨论征集中</h1>
+      <div class="discuss">
+        <ul class="list-unstyled">
+          <li><a href="javascript:">讨论1讨论1讨论1讨论1讨论1讨论1</a></li>
+          <li><a href="javascript:">讨论2讨论2讨论2讨论2讨论2讨论2</a></li>
+        </ul>
+      </div>
+      <h1>往期节目</h1>
+      <div class="discuss">
+        <ul class="list-unstyled">
+          <li><a href="javascript:">第一期第一期第一期第一期第一期</a></li>
+          <li><a href="javascript:">第二期第二期第二期第二期第二期</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-<script src="{% static "news/j/dc2f9ab9.vendor.js" %}"></script>
-<script src="{% static "news/j/b6c3df09.main.js" %}"></script>
 </body>
 </html>
