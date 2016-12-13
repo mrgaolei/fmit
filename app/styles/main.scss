@@ -2,6 +2,7 @@
 
 body {
   padding-bottom: 20px;
+  width: 7.5rem;
 }
 header{
   width: 100%;
@@ -10,4 +11,11 @@ header{
   padding:5% 10%;
   background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
   margin-bottom: 20px;
+}
+
+ul ,li{
+  list-style: none;
+}
+.main{
+
 }
