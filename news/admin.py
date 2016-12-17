@@ -1,6 +1,6 @@
 # coding=UTF-8
 from django.contrib import admin
-from .models import Source
+from .models import Source, MacSkill
 from .models import News
 from .models import Content
 from .models import Volume
@@ -39,6 +39,12 @@ class NewsAdmin(admin.ModelAdmin):
             return ['source', 'newsid']
         else:
             return []
+
+
+@admin.register(MacSkill)
+class MacSkillAdmin(admin.ModelAdmin):
+  pass
+
 
 @admin.register(Volume)
 class VolumeAdmin(admin.ModelAdmin):

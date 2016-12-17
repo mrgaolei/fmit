@@ -173,7 +173,7 @@ class Volume(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "FMiT.VOL$d %s" % (self.vol, self.subject)
+        return "FMiT.VOL%d %s" % (self.vol, self.subject)
 
     class Meta:
         verbose_name = u"节目"
