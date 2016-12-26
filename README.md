@@ -8,3 +8,11 @@ pip install -r requirements.txt
 ./manage.py runserver
 
 ```
+
+
+## 创建超级管理员
+
+```
+./manage.py createsuperuser
+
+```

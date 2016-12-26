@@ -1,7 +1,18 @@
-@import "_bootstrap.scss";
+//@import "_bootstrap.scss";
+@import 'mixin/base.scss';
+
+.clearfix{
+  @include clearfix;
+}
+
+html{
+  font-size: 42.6667px;
+}
 
 body {
   padding-bottom: 20px;
+  margin: 0;
+  font-family: 'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif;
 }
 header{
   width: 100%;
@@ -12,9 +23,16 @@ header{
   margin-bottom: 5px;
 }
 
+h1,h2,h3,h4,h5,h6,ul,li,p{
+  margin: 0;
+}
+h1{
+  font-size: .34em;
+  padding: .5em 1em;
+}
+
 ul ,li{
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 .fmit-main{
@@ -30,20 +48,19 @@ ul ,li{
     .article-detail{
       margin-left: 120px;
       h2{
-        font-size: 20px;
+        font-size: .34em;
         font-weight: normal;
         margin-top: 0;
+        line-height: 1.1;
       }
       .article-footer{
-        position: absolute;
-        left: 130px;
-        bottom: 0;
         color: rgba(100,100,100,.4);
         font-size: 10px;
+        padding: 1em 0;
       }
       .comment{
         position: absolute;
-        right: 20px;
+        right: 1em;
         bottom: 0;
         color: #fff;
         font-size: 10px;
