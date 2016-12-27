@@ -10,18 +10,20 @@ html {
 body {
   padding-bottom: 20px;
   margin: 0;
+  color: #404040;
   font-family: 'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif; }
-
-header {
-  width: 100%;
-  height: 107px;
-  box-sizing: border-box;
-  padding: 5% 10%;
-  background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
-  margin-bottom: 5px; }
+  body header {
+    width: 100%;
+    height: 107px;
+    box-sizing: border-box;
+    padding: 5% 10%;
+    background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
+    margin-bottom: 5px;
+    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.2); }
 
 h1, h2, h3, h4, h5, h6, ul, li, p {
-  margin: 0; }
+  margin: 0;
+  color: #404040; }
 
 h1 {
   font-size: .34em;
@@ -33,8 +35,11 @@ ul, li {
 
 .fmit-main .article {
   padding: 10px;
-  position: relative;
   border-bottom: 1px solid rgba(100, 100, 100, 0.1); }
+  .fmit-main .article > a {
+    display: block;
+    text-decoration: none;
+    position: relative; }
   .fmit-main .article img {
     float: left;
     width: 100px;

@@ -7,13 +7,15 @@
 <section>
   <ul class="fmit-main">
   {% for vol in vol_coll %}
-    <li class="clearfix article">
-      <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
-      <div class="article-detail">
-        <h2>{{ vol }}</h2>
-        <p class="article-footer">{{ vol.collect }}</p>
-        <p class="comment">80评论</p>
-      </div>
+    <li class=" article">
+      <a href="#pageComment" class="clearfix">
+        <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
+        <div class="article-detail">
+          <h2>{{ vol }}</h2>
+          <p class="article-footer">{{ vol.collect }}</p>
+          <p class="comment">80评论</p>
+        </div>
+      </a>
     </li>
   {% endfor %}
   </ul>
@@ -23,13 +25,15 @@
 <section>
   <ul class="fmit-main">
   {% for vol in vol_release %}
-    <li class="clearfix article">
-      <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
-      <div class="article-detail">
-        <h2>{{ vol }}</h2>
-        <p class="article-footer">{{ vol.collect }}</p>
-        <p class="comment">80评论</p>
-      </div>
+    <li class="article">
+      <a href="#pageComment" class="clearfix">
+        <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
+        <div class="article-detail">
+          <h2>{{ vol }}</h2>
+          <p class="article-footer">{{ vol.collect }}</p>
+          <p class="comment">80评论</p>
+        </div>
+      </a>
     </li>
   {% endfor %}
   </ul>

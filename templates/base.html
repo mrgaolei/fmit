@@ -5,11 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="{% static "news/styles/main.css" %}"/>
+  <link rel="stylesheet" href="{% static "news/styles/mobilebone.css" %}"/>
   <title>FMiT 广播</title>
 </head>
 <body>
-<header></header>
-{% block content %}
-{% endblock %}
+  <div id="pageHome" class="page out">
+    <header></header>
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div id="pageComment" class="page out">
+    <a href="#pageHome" data-rel="back">返回</a>
+    <h3>这里是评论区</h3>
+  </div>
+<script src="{% static "news/js/mobilebone.js" %}"></script>
 </body>
 </html>
