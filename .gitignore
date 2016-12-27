@@ -7,3 +7,4 @@ dist
 .sass-cache
 bower_components
 uploads
+**/.css.map
