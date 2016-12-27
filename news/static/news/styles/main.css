@@ -65,4 +65,27 @@ ul, li {
       padding: 3px;
       line-height: 1; }
 
+#pageComment .comment-header {
+  height: 30px;
+  border-bottom: 1px solid gray;
+  padding: .1em .2em; }
+  #pageComment .comment-header a {
+    text-decoration: none;
+    color: #404040; }
+  #pageComment .comment-header svg {
+    float: left;
+    display: inline-block;
+    margin-top: .18em;
+    width: 16px;
+    height: 16px;
+    fill: gray; }
+  #pageComment .comment-header span {
+    font-size: .2em;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+
 /*# sourceMappingURL=main.css.map */
