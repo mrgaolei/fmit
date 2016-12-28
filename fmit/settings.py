@@ -27,7 +27,7 @@ SECRET_KEY = config('FMIT_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('FMIT_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["192.168.3.217",'0.0.0.0','192.168.199.1','127.0.0.1']
+ALLOWED_HOSTS = ["192.168.3.217",'0.0.0.0','192.168.199.1','127.0.0.1','192.168.199.198']
 
 SITE_ID = 1
 
