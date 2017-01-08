@@ -118,6 +118,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
+DEFAULT_FILE_STORAGE = config('FMIT_DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
 MEDIA_ROOT = BASE_DIR + '/uploads'
 MEDIA_URL = config('FMIT_MEDIA_URL', default='/uploads/')
 
@@ -136,3 +137,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     'PAGE_SIZE': 20,
 }
+
+QINIU_ACCESS_KEY = config('FMIT_QINIU_ACCESS_KEY')
+QINIU_SECRET_KEY = config('FMIT_QINIU_SECRET_KEY')
+QINIU_BUCKET_NAME = config('FMIT_QINIU_BUCKET_NAME', default='fmit-media')
+QINIU_BUCKET_DOMAIN = config('FMIT_QINIU_BUCKET_DOMAIN')

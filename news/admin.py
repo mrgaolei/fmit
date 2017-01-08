@@ -48,4 +48,4 @@ class MacSkillAdmin(admin.ModelAdmin):
 
 @admin.register(Volume)
 class VolumeAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ['status', 'category']

@@ -163,9 +163,22 @@ class Volume(models.Model):
         (VOLUME_STATUS_RECORD, u"正在录音"),
         (VOLUME_STATUS_RELEASE, u"已发布"),
     )
+    VOLUME_CATEGORY_GENERAL = 0
+    VOLUME_CATEGORY_SPEC = 1
+    VOLUME_CATEGORY_WEEKLY = 2
+    VOLUME_CATEGORY_DISCUSS = 3
+    VOLUME_CATEGORY = (
+        (VOLUME_CATEGORY_GENERAL, u"VOL"),
+        (VOLUME_CATEGORY_SPEC, u"Spec"),
+        (VOLUME_CATEGORY_WEEKLY, u"Weekly"),
+        (VOLUME_CATEGORY_DISCUSS, u"Discuss"),
+    )
+
     vol = models.IntegerField(u"期")
     subject = models.CharField(u"节目标题", max_length=200)
     status = models.SmallIntegerField(u"状态", choices=VOLUME_STATUS, default=VOLUME_STATUS_COLLECT, db_index=True)
+    category = models.SmallIntegerField(u"类型", choices=VOLUME_CATEGORY, default=VOLUME_CATEGORY_GENERAL, db_index=True)
+    album = models.ImageField(u"封面", upload_to='album')
     collect = models.CharField(u"征集文", max_length=255)
     mac_skill = models.ForeignKey(MacSkill)
     digi_rec = None

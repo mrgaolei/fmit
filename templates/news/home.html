@@ -9,7 +9,7 @@
   {% for vol in vol_coll %}
     <li class=" article">
       <a href="#pageComment" class="clearfix">
-        <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
+        {% if vol.album %}<img src="{{ vol.album.url }}" alt="新闻标题"/>{% endif %}
         <div class="article-detail">
           <h2>{{ vol }}</h2>
           <p class="article-footer">{{ vol.collect }}</p>
@@ -27,7 +27,7 @@
   {% for vol in vol_release %}
     <li class="article">
       <a href="#pageComment" class="clearfix">
-        <img src="{% static "news/images/img.jpg" %}" alt="新闻标题"/>
+        {% if vol.album %}<img src="{{ vol.album.url }}" alt="新闻标题"/>{% endif %}
         <div class="article-detail">
           <h2>{{ vol }}</h2>
           <p class="article-footer">{{ vol.collect }}</p>
