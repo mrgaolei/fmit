@@ -1,6 +1,6 @@
 # coding=UTF-8
 from django.contrib import admin
-from .models import Source, MacSkill
+from .models import Source, MacSkill, MacSkillContent
 from .models import News
 from .models import Content
 from .models import Volume
@@ -41,9 +41,14 @@ class NewsAdmin(admin.ModelAdmin):
             return []
 
 
+class MacSkillContentInline(admin.StackedInline):
+    model = MacSkillContent
+
+
 @admin.register(MacSkill)
 class MacSkillAdmin(admin.ModelAdmin):
-  pass
+    list_display = ('subject', 'volume')
+    inlines = [MacSkillContentInline]
 
 
 @admin.register(Volume)

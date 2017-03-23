@@ -140,20 +140,6 @@ class Content(models.Model):
         verbose_name_plural = verbose_name
 
 
-class MacSkill(models.Model):
-    subject = models.CharField(u"技巧标题", max_length=200)
-    cmd = models.CharField(u"Command Line", max_length=255, blank=True)
-    url = models.URLField(u"来源", blank=True)
-
-    class Meta:
-        verbose_name = u"mac技巧"
-
-
-class MacSkillContent(models.Model):
-    mac_skill = models.OneToOneField(MacSkill)
-    content = HTMLField(u"技巧内容")
-
-
 class Volume(models.Model):
     VOLUME_STATUS_COLLECT = 0
     VOLUME_STATUS_RECORD = 1
@@ -180,7 +166,6 @@ class Volume(models.Model):
     category = models.SmallIntegerField(u"类型", choices=VOLUME_CATEGORY, default=VOLUME_CATEGORY_GENERAL, db_index=True)
     album = models.ImageField(u"封面", upload_to='album')
     collect = models.CharField(u"征集文", max_length=255)
-    mac_skill = models.ForeignKey(MacSkill)
     digi_rec = None
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -200,3 +185,18 @@ class Information(models.Model):
 
     def __unicode__(self):
         return self.volume
+
+
+class MacSkill(models.Model):
+    volume = models.OneToOneField(Volume, related_name='mac_skill')
+    subject = models.CharField(u"技巧标题", max_length=200)
+    cmd = models.CharField(u"Command Line", max_length=255, blank=True)
+    url = models.URLField(u"来源", blank=True)
+
+    class Meta:
+        verbose_name = u"mac技巧"
+
+
+class MacSkillContent(models.Model):
+    mac_skill = models.OneToOneField(MacSkill)
+    content = HTMLField(u"技巧内容")
