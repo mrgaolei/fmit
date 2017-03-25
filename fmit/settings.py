@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_comments',
-    'tinymce',
+    'markdownx',
     'tagging',
     'rest_framework',
     'audience',
