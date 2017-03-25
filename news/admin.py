@@ -1,7 +1,5 @@
 # coding=UTF-8
 from django.contrib import admin
-from django.db import models
-from markdownx.widgets import AdminMarkdownxWidget
 
 from news.forms import MacSkillForm
 from .models import Source, MacSkill, MacSkillContent
