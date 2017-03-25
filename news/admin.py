@@ -49,9 +49,20 @@ class MacSkillContentInline(admin.StackedInline):
 
 @admin.register(MacSkill)
 class MacSkillAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'volume')
+    list_display = ('subject', 'volume', 'author')
     inlines = [MacSkillContentInline]
     form = MacSkillForm
+    search_fields = ['subject']
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.author = request.user
+        obj.save()
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ['volume']
+        return []
 
 
 @admin.register(Volume)

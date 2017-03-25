@@ -2,6 +2,7 @@
 import hashlib
 from urllib import urlretrieve
 
+from django.conf import settings
 from django.core.files import File
 from django.db import models
 from django.utils import timezone
@@ -193,9 +194,11 @@ class MacSkill(models.Model):
     subject = models.CharField(u"技巧标题", max_length=200)
     cmd = models.CharField(u"Command Line", max_length=255, blank=True)
     url = models.URLField(u"来源", blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
 
     class Meta:
         verbose_name = u"mac技巧"
+        verbose_name_plural = verbose_name
 
 
 register(MacSkill)
