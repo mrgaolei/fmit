@@ -1,5 +1,9 @@
 # coding=UTF-8
 from django.contrib import admin
+from django.db import models
+from markdownx.widgets import AdminMarkdownxWidget
+
+from news.forms import MacSkillForm
 from .models import Source, MacSkill, MacSkillContent
 from .models import News
 from .models import Content
@@ -49,8 +53,10 @@ class MacSkillContentInline(admin.StackedInline):
 class MacSkillAdmin(admin.ModelAdmin):
     list_display = ('subject', 'volume')
     inlines = [MacSkillContentInline]
+    form = MacSkillForm
 
 
 @admin.register(Volume)
 class VolumeAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'vol', 'category', 'status', 'created')
     list_filter = ['status', 'category']

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from dal import autocomplete
 from rest_framework import viewsets
 from rest_framework.pagination import CursorPagination
 
@@ -35,6 +36,28 @@ def news_list(request, page=1):
 def news_detail(request, id):
     news = News.objects.get(pk=id)
     return render(request, 'news/detail.html', {'news': news})
+
+
+# DAL
+
+
+class VolumeAutocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        if not self.request.user.is_authenticated():
+            return Volume.objects.none()
+        qs = Volume.objects.all()
+        if self.q:
+            try:
+                vol_int = int(self.q)
+                qs = qs.filter(vol=vol_int)
+            except ValueError:
+                qs = qs.filter(subject__contains=self.q)
+
+        return qs
+
+
+# DRF
 
 
 class NewsResultsSetPagination(CursorPagination):
