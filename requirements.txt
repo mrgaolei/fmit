@@ -14,4 +14,4 @@ django-qiniu-storage==2.3.0
 django-tinymce==2.6.0
 django-contrib-comments==1.8
 django-autocomplete-light==3.2.1
-
+django-tagging==0.4.5

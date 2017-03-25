@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django_comments',
     'tinymce',
+    'tagging',
     'rest_framework',
     'audience',
     'news',

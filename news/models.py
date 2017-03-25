@@ -5,6 +5,7 @@ from urllib import urlretrieve
 from django.core.files import File
 from django.db import models
 from django.utils import timezone
+from tagging.registry import register
 
 from tinymce.models import HTMLField
 import re
@@ -195,6 +196,9 @@ class MacSkill(models.Model):
 
     class Meta:
         verbose_name = u"mac技巧"
+
+
+register(MacSkill)
 
 
 class MacSkillContent(models.Model):
