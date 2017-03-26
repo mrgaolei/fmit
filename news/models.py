@@ -7,7 +7,8 @@ from django.core.files import File
 from django.db import models
 from django.utils import timezone
 from tagging.registry import register
-from markdownx.models import MarkdownxField
+
+from tinymce.models import HTMLField
 import re
 
 
@@ -131,7 +132,7 @@ class News(models.Model):
 
 class Content(models.Model):
     news = models.OneToOneField(News, verbose_name=u"新闻")
-    content = models.TextField(u"文章内容")
+    content = HTMLField(u"文章内容")
 
     def __unicode__(self):
         return self.news.title
@@ -176,7 +177,6 @@ class Volume(models.Model):
 
     class Meta:
         verbose_name = u"节目"
-        verbose_name_plural = verbose_name
         ordering = ['-vol']
 
 
@@ -196,9 +196,6 @@ class MacSkill(models.Model):
     url = models.URLField(u"来源", blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
 
-    def __unicode__(self):
-        return self.subject
-
     class Meta:
         verbose_name = u"mac技巧"
         verbose_name_plural = verbose_name
@@ -209,4 +206,4 @@ register(MacSkill)
 
 class MacSkillContent(models.Model):
     mac_skill = models.OneToOneField(MacSkill)
-    content = MarkdownxField(u"技巧内容")
+    content = HTMLField(u"技巧内容")
