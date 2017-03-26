@@ -177,6 +177,7 @@ class Volume(models.Model):
 
     class Meta:
         verbose_name = u"节目"
+        verbose_name_plural = verbose_name
         ordering = ['-vol']
 
 
@@ -195,6 +196,9 @@ class MacSkill(models.Model):
     cmd = models.CharField(u"Command Line", max_length=255, blank=True)
     url = models.URLField(u"来源", blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
+
+    def __unicode__(self):
+        return self.subject
 
     class Meta:
         verbose_name = u"mac技巧"
