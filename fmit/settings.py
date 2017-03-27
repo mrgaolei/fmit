@@ -128,7 +128,9 @@ MEDIA_URL = config('FMIT_MEDIA_URL', default='/uploads/')
 AUTHENTICATION_BACKENDS = ('audience.backend.ThirdAuthBackend', 'django.contrib.auth.backends.ModelBackend',)
 
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'simple',
+    'theme': 'advanced',
+    'theme_advanced_buttons1': 'bold,italic,underline,strikethrough,|,forecolor,backcolor',
+    'theme_advanced_buttons2': 'link,|,bullist,numlist,|,code',
     'width': 900,
     'height': 400,
 }
