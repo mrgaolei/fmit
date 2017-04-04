@@ -191,6 +191,7 @@ class Information(models.Model):
 
 
 class MacSkill(models.Model):
+    brow = models.SlugField(u"URL", unique=True)
     volume = models.OneToOneField(Volume, related_name='mac_skill')
     subject = models.CharField(u"技巧标题", max_length=200)
     cmd = models.CharField(u"Command Line", max_length=255, blank=True)
@@ -199,6 +200,10 @@ class MacSkill(models.Model):
 
     def __unicode__(self):
         return self.subject
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('working-mac', args=(self.brow,))
 
     class Meta:
         verbose_name = u"mac技巧"

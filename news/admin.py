@@ -49,7 +49,7 @@ class MacSkillContentInline(admin.StackedInline):
 
 @admin.register(MacSkill)
 class MacSkillAdmin(admin.ModelAdmin):
-    list_display = ('volume', 'subject', 'author')
+    list_display = ('subject', 'volume', 'author')
     list_display_links = ('volume', 'subject')
     inlines = [MacSkillContentInline]
     form = MacSkillForm
