@@ -197,6 +197,7 @@ class MacSkill(models.Model):
     cmd = models.CharField(u"Command Line", max_length=255, blank=True)
     url = models.URLField(u"来源", blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
+    is_publish = models.BooleanField(u"发布", default=False, db_index=True)
 
     def __unicode__(self):
         return self.subject

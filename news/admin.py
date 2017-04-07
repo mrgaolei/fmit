@@ -49,8 +49,9 @@ class MacSkillContentInline(admin.StackedInline):
 
 @admin.register(MacSkill)
 class MacSkillAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'volume', 'author')
+    list_display = ('subject', 'volume', 'is_publish', 'author')
     list_display_links = ('volume', 'subject')
+    ordering = ['-volume__vol']
     inlines = [MacSkillContentInline]
     form = MacSkillForm
     search_fields = ['subject']
