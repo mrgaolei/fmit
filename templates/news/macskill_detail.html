@@ -5,7 +5,7 @@
     <h3>From: {{ object.volume.subject }}</h3>
     <h4>{{ object.cmd }}</h4>
     {% if object.url %}<h5>来源{{ object.url }}</h5>{% endif %}
-    <h4>{{ object.author }}</h4>
+    <h4>{{ object.author.first_name }}</h4>
 
     <h5>Tags:</h5>
     {% tags_for_model news.macskill as tags %}
