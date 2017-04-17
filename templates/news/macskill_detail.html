@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 {% load tagging_tags %}
 {% block content %}
-    <h2>{{ object.subject }}</h2>
-    <h3>From: {{ object.volume.subject }}</h3>
-    <h4>{{ object.cmd }}</h4>
-    {% if object.url %}<h5>来源{{ object.url }}</h5>{% endif %}
-    <h4>{{ object.author.first_name }}</h4>
-
-    <h5>Tags:</h5>
-    {% tags_for_model news.macskill as tags %}
-    <ul>
-    {% for tag in tags %}
-    <li>{{ tag }}</li>
-    {% endfor %}
-    </ul>
-    <hr />
-    {{ object.macskillcontent.content|safe }}
+    <div class="article">
+        <header>
+            <h2>{{ object.subject }}</h2>
+            <h3>From: {{ object.volume.subject }}</h3>
+            <h4>{{ object.cmd }}</h4>
+            {% if object.url %}<h5>来源{{ object.url }}</h5>{% endif %}
+            <p class="author">
+                作者：{{ object.author.first_name }}
+            </p>
+            <p class="tags">
+                tags：{% tags_for_model news.macskill as tags %}
+            </p>
+        </header>
+        
+        <ul>
+        {% for tag in tags %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+        </ul>
+        <section class="block">
+            {{ object.macskillcontent.content|safe }}
+        </section>
+    </div>
 {% endblock %}

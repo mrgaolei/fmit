@@ -7,13 +7,15 @@
 html {
   font-size: 42.6667px;
   -webkit-text-size-adjust: none;
-  font-family: 'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif; }
+  font-family: 'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif;
+  height: 100%; }
 
 body {
   padding-bottom: 20px;
   margin: 0;
-  color: #404040; }
-  body header {
+  color: #404040;
+  height: 100%; }
+  body #pageHome > header {
     width: 100%;
     height: 107px;
     box-sizing: border-box;
@@ -34,9 +36,26 @@ ul, li {
   list-style: none;
   padding: 0; }
 
+section.home {
+  height: calc(100% - 160px);
+  overflow-y: auto; }
+
+.block {
+  -moz-border-image: url(../images/border-line-2.png) 2 stretch;
+  border-image: url(../images/border-line-2.png) 2 stretch;
+  border-top: 2px solid #e5e5e5;
+  border-bottom: 2px solid #e5e5e5;
+  overflow: hidden;
+  margin: 10px 0;
+  background-color: #fff;
+  display: block;
+  position: relative;
+  font-size: 14px; }
+
 .fmit-main .article {
   padding: 10px;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.1); }
+  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+  border-top: none; }
   .fmit-main .article > a {
     display: block;
     text-decoration: none;
@@ -107,7 +126,6 @@ ul, li {
       #pageComment ul.comment li .comment-user-profile img {
         width: 20px;
         height: 20px;
-        border-radius: 50%;
         border: 1px solid gray;
         display: block; }
     #pageComment ul.comment li .comment-detail {
@@ -178,5 +196,10 @@ ul, li {
     border-radius: 4px;
     color: #fff;
     font-size: .3em; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), not all, not all {
+  .block {
+    border-top-width: 1px;
+    border-bottom-width: 1px; } }
 
 /*# sourceMappingURL=main.css.map */
