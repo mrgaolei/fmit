@@ -28,8 +28,17 @@
 			color: #8c8c8c;
 		}
 		.tags{
+			padding-top: 5px;
 			color:#8c8c8c;
 			font-size: 12px;
+			p{
+				color:#8c8c8c;
+				font-size: 12px;
+			}
+			span{
+				display: inline-block;
+				padding: 5px;
+			}
 		}
 
 	}

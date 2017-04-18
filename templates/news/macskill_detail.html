@@ -10,16 +10,19 @@
             <p class="author">
                 作者：{{ object.author.first_name }}
             </p>
-            <p class="tags">
-                tags：{% tags_for_model news.macskill as tags %}
-            </p>
+            <div class="tags">
+                <p> 
+                    <em>tags：</em>
+                    {% tags_for_model news.macskill as tags %}
+                    {% for tag in tags %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </p>
+                              
+            </div>
         </header>
         
-        <ul>
-        {% for tag in tags %}
-        <li>{{ tag }}</li>
-        {% endfor %}
-        </ul>
+        
         <section class="block">
             {{ object.macskillcontent.content|safe }}
         </section>

@@ -21,8 +21,15 @@
     font-size: 12px;
     color: #8c8c8c; }
   .article header .tags {
+    padding-top: 5px;
     color: #8c8c8c;
     font-size: 12px; }
+    .article header .tags p {
+      color: #8c8c8c;
+      font-size: 12px; }
+    .article header .tags span {
+      display: inline-block;
+      padding: 5px; }
   .article section {
     border-bottom: none;
     padding-top: 10px;
