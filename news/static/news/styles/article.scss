@@ -3,10 +3,9 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.article{
-	height: calc(100% - 130px);
-	overflow-y: auto;
-	padding: 15px;
+.macskill{
+	
+	padding:0 15px;
 
 	header{
 		h2{
@@ -16,12 +15,6 @@
 		    font-size: 24px;
 			width: 100%;
 			@extend .text-overflow;
-		}
-		h3{
-			font-size: 18px;
-			width: 100%;
-			@extend .text-overflow;
-			color: #8c8c8c;
 		}
 		.author{
 			font-size: 12px;
@@ -50,6 +43,21 @@
 			color: #3e3e3e;
 			font-size: 16px;
 			line-height: 1.5;
+		}
+	}
+
+	footer{
+		pading: 15px 0;
+		p{
+			font-size: 18px;
+			color: #8c8c8c;
+		}
+		p:first-child{
+			float: left;
+		}
+		p:last-child{
+			margin-left: 50px;
+			@extend .text-overflow;
 		}
 	}
 	

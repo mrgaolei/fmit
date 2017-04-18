@@ -34,13 +34,16 @@
     </symbol>
   </defs>
 </svg>
+<header></header>
   <div id="pageHome" class="page out">
-    <header></header>
-    {% block content %}
-    {% endblock %}
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
   </div>
   <div id="pageComment" class="page out">
-    <div class="comment-header">
+    <div class="content">
+      <div class="comment-header">
       <a href="#pageHome" data-rel="back">
         <svg class="">
           <use xlink:href="#icon-chevron-thin-left"></use>
@@ -167,6 +170,7 @@
         <input type="text" placeholder="写评论" />
         <button>发送</button>
       </form>
+    </div>
     </div>
   </div>
 <script src="{% static "news/js/mobilebone.js" %}"></script>

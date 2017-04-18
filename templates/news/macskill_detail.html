@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load tagging_tags %}
 {% block content %}
-    <div class="article">
+    <div class="macskill">
         <header>
             <h2>{{ object.subject }}</h2>
             <h4>{{ object.cmd }}</h4>
@@ -22,9 +22,12 @@
         </header>
 
 
-        <section class="block">
+        <section class="">
             {{ object.macskillcontent.content|safe }}
         </section>
-    <h3>出处: {{ object.volume }}</h3>
+        <footer>
+            <p>出处: </p>
+            <p>{{ object.volume }}</p>
+        </footer>
     </div>
 {% endblock %}
