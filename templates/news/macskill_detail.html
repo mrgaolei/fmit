@@ -4,27 +4,27 @@
     <div class="article">
         <header>
             <h2>{{ object.subject }}</h2>
-            <h3>From: {{ object.volume.subject }}</h3>
             <h4>{{ object.cmd }}</h4>
             {% if object.url %}<h5>来源{{ object.url }}</h5>{% endif %}
             <p class="author">
                 作者：{{ object.author.first_name }}
             </p>
             <div class="tags">
-                <p> 
-                    <em>tags：</em>
-                    {% tags_for_model news.macskill as tags %}
+                <p>
+                    <em>Tags：</em>
+                    {% tags_for_object object as tags %}
                     {% for tag in tags %}
                     <span>{{ tag }}</span>
                     {% endfor %}
                 </p>
-                              
+
             </div>
         </header>
-        
-        
+
+
         <section class="block">
             {{ object.macskillcontent.content|safe }}
         </section>
+    <h3>出处: {{ object.volume }}</h3>
     </div>
 {% endblock %}
