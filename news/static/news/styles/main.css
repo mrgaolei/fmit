@@ -19,7 +19,6 @@ body {
     width: 100%;
     height: 107px;
     box-sizing: border-box;
-    padding: 5% 10%;
     background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
     margin-bottom: 5px;
     box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.2);
