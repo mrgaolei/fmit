@@ -1,4 +1,4 @@
-.text-overflow, .macskill header h2, .macskill footer p:last-child {
+.text-overflow, .macskill header h2, .macskill footer div:first-child p:last-child {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -33,13 +33,26 @@
       font-size: 16px;
       line-height: 1.5; }
   .macskill footer {
-    pading: 15px 0; }
-    .macskill footer p {
+    padding: 15px 0; }
+    .macskill footer div:first-child p {
       font-size: 18px;
       color: #8c8c8c; }
-    .macskill footer p:first-child {
+    .macskill footer div:first-child p:first-child {
       float: left; }
-    .macskill footer p:last-child {
+    .macskill footer div:first-child p:last-child {
       margin-left: 50px; }
+    .macskill footer .links {
+      text-align: center;
+      padding-top: 15px; }
+      .macskill footer .links p {
+        text-align: left;
+        font-size: 16px;
+        color: #3e3e3e;
+        font-weight: bold;
+        float: none;
+        padding-bottom: 15px; }
+      .macskill footer .links img {
+        width: 200px;
+        height: 200px; }
 
 /*# sourceMappingURL=article.css.map */

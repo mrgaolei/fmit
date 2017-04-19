@@ -47,17 +47,35 @@
 	}
 
 	footer{
-		pading: 15px 0;
-		p{
-			font-size: 18px;
-			color: #8c8c8c;
+		padding: 15px 0;
+		div:first-child{
+			p{
+				font-size: 18px;
+				color: #8c8c8c;
+			}
+			p:first-child{
+				float: left;
+			}
+			p:last-child{
+				margin-left: 50px;
+				@extend .text-overflow;
+			}
 		}
-		p:first-child{
-			float: left;
-		}
-		p:last-child{
-			margin-left: 50px;
-			@extend .text-overflow;
+		.links{
+			text-align: center;
+			padding-top: 15px;
+			p{
+				text-align: left;
+				font-size: 16px;
+			    color: rgb(62, 62, 62);
+			    font-weight: bold;
+			    float: none;
+			    padding-bottom: 15px;
+			}
+			img{
+				width: 200px;
+				height: 200px;
+			}
 		}
 	}
 	

@@ -26,8 +26,14 @@
             {{ object.macskillcontent.content|safe }}
         </section>
         <footer>
-            <p>出处: </p>
-            <p>{{ object.volume }}</p>
+            <div class="clearfix">
+                <p>出处: </p>
+                <p>{{ object.volume }}</p>
+            </div>
+            <div class="links">
+                <p>【微信号】：FMiT</p>
+                <img src="{% static "news/images/img.jpg" %}" alt="【微信号】：FMiT">
+            </div>
         </footer>
     </div>
 {% endblock %}

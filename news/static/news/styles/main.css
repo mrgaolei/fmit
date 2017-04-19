@@ -27,7 +27,10 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    z-index: 1; }
+    z-index: 1;
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto; }
 
 h1, h2, h3, h4, h5, h6, ul, li, p {
   margin: 0;
@@ -61,7 +64,10 @@ ul, li {
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto; }
 
 .fmit-main .article {
   padding: 10px;
