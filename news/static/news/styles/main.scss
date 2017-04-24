@@ -17,12 +17,21 @@ body {
   margin: 0;
   color: #404040;
   height: 100%;
-  & > header{
-    width: 100%;
-    height: 107px;
-    box-sizing: border-box;
-    background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
-    box-shadow:0 5px 15px 5px rgba(0,0,0,.2);
+  // & > header{
+  //   width: 100%;
+  //   height: 107px;
+  //   box-sizing: border-box;
+  //   background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
+  //   box-shadow:0 5px 15px 5px rgba(0,0,0,.2);
+  //   top: 0;
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   z-index: 1;
+  //   max-width: 740px;
+  //   margin: 0 auto 5px;
+  // }
+  header.logo{
     top: 0;
     position: absolute;
     left: 0;
@@ -30,6 +39,73 @@ body {
     z-index: 1;
     max-width: 740px;
     margin: 0 auto 5px;
+    box-shadow:0 3px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: #006834;
+    height: 107px;
+    span{
+      font-size: 90px;
+      display: inline-block;
+      vertical-align: -75px;
+      color: rgb(197,170,52);
+      .i{
+        display: inline-block;
+        width: 8px;
+        height: 55px;
+        margin: 0 15px;
+        background: rgb(197,170,52);
+        position: relative;
+        vertical-align: 5px;
+        &:after{
+          content:'';
+          position: absolute;
+          top: -19px;
+          left: -4px;
+          width: 5px;
+          height: 5px;
+          background: #006834;
+          border: 6px solid rgb(197,170,52);
+          border-radius: 50%;
+        }
+        &:before{
+          content:'';
+          position: absolute;
+          top: -28px;
+          left: -29px;
+          width: 60px;
+          height: 90px;
+          background: transparent;
+          border-width: 3px;
+          border-style: solid;
+          border-color:  rgb(197,170,52) transparent transparent transparent;
+          border-radius: 50%;
+        }
+        em{
+          position: absolute;
+          top: -36px;
+          left: -39px;
+          width: 80px;
+          height: 110px;
+          background: transparent;
+          border-width: 3px;
+          border-style: solid;
+          border-color:  rgb(197,170,52) transparent transparent transparent;
+          border-radius: 50%;
+          &:after{
+            content:'';
+            position: absolute;
+            top: -12px;
+            left: -13px;
+            width: 100px;
+            height: 130px;
+            background: transparent;
+            border-width: 3px;
+            border-style: solid;
+            border-color:  rgb(197,170,52) transparent transparent transparent;
+            border-radius: 60%;
+          } 
+        }
+      }
+    }
   }
 }
 
