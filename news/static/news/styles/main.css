@@ -20,7 +20,6 @@ body {
     height: 107px;
     box-sizing: border-box;
     background: #006834 url("../images/fmit-logo.png") 5% center no-repeat;
-    margin-bottom: 5px;
     box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.2);
     top: 0;
     position: absolute;
@@ -28,8 +27,7 @@ body {
     right: 0;
     z-index: 1;
     max-width: 740px;
-    margin-left: auto;
-    margin-right: auto; }
+    margin: 0 auto 5px; }
 
 h1, h2, h3, h4, h5, h6, ul, li, p {
   margin: 0;
