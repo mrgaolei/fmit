@@ -13,8 +13,8 @@ from .serializers import NewsSerializer
 
 def home(request):
     # coll
-    vol_coll = Volume.objects.filter(status=Volume.VOLUME_STATUS_COLLECT)[10]
-    vol_release = Volume.objects.filter(status=Volume.VOLUME_STATUS_RELEASE)[10]
+    vol_coll = Volume.objects.filter(status=Volume.VOLUME_STATUS_COLLECT)[:10]
+    vol_release = Volume.objects.filter(status=Volume.VOLUME_STATUS_RELEASE)[:10]
 
     return render(request, 'news/home.html', {
         'vol_coll': vol_coll,
