@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from dal import autocomplete
 from django.views.generic import DetailView
 from django_comments.models import Comment
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.decorators import detail_route
 from rest_framework.pagination import CursorPagination
 from rest_framework.response import Response
@@ -89,14 +89,26 @@ class VolumeViewSet(viewsets.ReadOnlyModelViewSet):
     def comments(self, request, pk=None):
         volume = self.get_object()
         content_type = ContentType.objects.get(app_label="news", model="volume")
-        queryset = Comment.objects.filter(content_type=content_type,
-                                          object_pk=volume.pk,
-                                          is_removed=False,
-                                          is_public=True).order_by('-submit_date')
-        # page = self.paginate_queryset(queryset)
-        # if page is not None:
-        # serializer = CommentSerializer(page, many=True)
-        # return self.get_paginated_response(serializer.data)
-        serializer = CommentSerializer(queryset, many=True)
 
-        return Response({'results': serializer.data})
+        if request.method == 'GET':
+            queryset = Comment.objects.filter(content_type=content_type,
+                                              object_pk=volume.pk,
+                                              is_removed=False,
+                                              is_public=True).order_by('-submit_date')
+            # page = self.paginate_queryset(queryset)
+            # if page is not None:
+            # serializer = CommentSerializer(page, many=True)
+            # return self.get_paginated_response(serializer.data)
+            serializer = CommentSerializer(queryset, many=True)
+
+            return Response({'results': serializer.data})
+        elif request.method == 'POST':
+            comment, created = Comment.objects.get_or_create(user=request.user, content_type=content_type,
+                                                             object_pk=volume.pk, site_id=1,
+                                                             comment=request.data['comment'], is_removed=False)
+            if created:
+                st = status.HTTP_201_CREATED
+            else:
+                st = status.HTTP_400_BAD_REQUEST
+            serializer = CommentSerializer(comment)
+            return Response(serializer.data, status=st)
