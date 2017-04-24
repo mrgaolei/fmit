@@ -1,12 +1,17 @@
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from dal import autocomplete
 from django.views.generic import DetailView
+from django_comments.models import Comment
 from rest_framework import viewsets
+from rest_framework.decorators import detail_route
 from rest_framework.pagination import CursorPagination
+from rest_framework.response import Response
 
 from .models import News, Volume, MacSkill
-from .serializers import NewsSerializer
+from .serializers import NewsSerializer, VolumeSerializer, CommentSerializer
+
 
 # Create your views here.
 
@@ -74,3 +79,24 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     pagination_class = NewsResultsSetPagination
+
+
+class VolumeViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Volume.objects.all()
+    serializer_class = VolumeSerializer
+
+    @detail_route(methods=['GET'])
+    def comments(self, request, pk=None):
+        volume = self.get_object()
+        content_type = ContentType.objects.get(app_label="news", model="volume")
+        queryset = Comment.objects.filter(content_type=content_type,
+                                          object_pk=volume.pk,
+                                          is_removed=False,
+                                          is_public=True).order_by('-submit_date')
+        # page = self.paginate_queryset(queryset)
+        # if page is not None:
+        # serializer = CommentSerializer(page, many=True)
+        # return self.get_paginated_response(serializer.data)
+        serializer = CommentSerializer(queryset, many=True)
+
+        return Response({'results': serializer.data})
