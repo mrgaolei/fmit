@@ -15,7 +15,7 @@
         <div class="article-detail">
           <h2>{{ vol }}</h2>
           <p class="article-footer">{{ vol.collect }}</p>
-          <p class="comment">{{ comment_count }}评论</p>
+          {% if comment_count %}<p class="comment">{{ comment_count }}评论</p>{% endif %}
         </div>
       </a>
     </li>
@@ -34,7 +34,7 @@
         <div class="article-detail">
           <h2>{{ vol }}</h2>
           <p class="article-footer">{{ vol.collect }}</p>
-          <p class="comment">{{ comment_count }}评论</p>
+          {% if comment_count %}<p class="comment">{{ comment_count }}评论</p>{% endif %}
         </div>
       </a>
     </li>
