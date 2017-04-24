@@ -25,11 +25,12 @@ body {
     margin: 0 auto 5px;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
     background-color: #006834;
-    height: 107px; }
+    height: 107px;
+    overflow: hidden; }
     body header.logo span {
       font-size: 90px;
       display: inline-block;
-      vertical-align: -75px;
+      vertical-align: -70px;
       color: #c5aa34; }
       body header.logo span .i {
         display: inline-block;
