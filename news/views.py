@@ -85,7 +85,7 @@ class VolumeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Volume.objects.all()
     serializer_class = VolumeSerializer
 
-    @detail_route(methods=['GET'])
+    @detail_route(methods=['GET','POST'])
     def comments(self, request, pk=None):
         volume = self.get_object()
         content_type = ContentType.objects.get(app_label="news", model="volume")
@@ -112,3 +112,12 @@ class VolumeViewSet(viewsets.ReadOnlyModelViewSet):
                 st = status.HTTP_400_BAD_REQUEST
             serializer = CommentSerializer(comment)
             return Response(serializer.data, status=st)
+
+
+
+
+
+
+
+
+
