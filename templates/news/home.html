@@ -9,8 +9,8 @@
   <ul class="fmit-main">
   {% for vol in vol_coll %}
   {% get_comment_count for vol as comment_count %}
-    <li class=" article" id="{{ vol.id }}">
-      <a href="#pageComment" class="clearfix">
+    <li class=" article">
+      <a href="#pageComment" class="clearfix"  id="{{ vol.id }}">
         {% if vol.album %}<img src="{{ vol.album.url }}" alt="新闻标题"/>{% endif %}
         <div class="article-detail">
           <h2>{{ vol }}</h2>
@@ -28,8 +28,8 @@
   <ul class="fmit-main">
   {% for vol in vol_release %}
   {% get_comment_count for vol as comment_count %}
-    <li class="article"  id="{{ vol.id }}">
-      <a href="#pageComment" class="clearfix">
+    <li class="article">
+      <a href="#pageComment" class="clearfix" id="{{ vol.id }}">
         {% if vol.album %}<img src="{{ vol.album.url }}" alt="新闻标题"/>{% endif %}
         <div class="article-detail">
           <h2>{{ vol }}</h2>
