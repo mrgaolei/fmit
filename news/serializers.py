@@ -3,6 +3,7 @@ from django.utils import timezone
 from django_comments.models import Comment
 from rest_framework import serializers
 
+from audience.serializers import UserSerializer
 from .models import News, Volume
 
 
@@ -22,6 +23,7 @@ class CommentSerializer(serializers.ModelSerializer):
     submit_date = timezone.now()
     ip_public = "True"
     is_removed = "False"
+    user = UserSerializer(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Comment
