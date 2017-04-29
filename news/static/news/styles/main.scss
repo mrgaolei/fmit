@@ -236,6 +236,13 @@ section.home{
       position: relative;
       border-bottom: 1px solid hsla(0, 0%, 87%, .6);
       padding: 15px 0;
+      &.no-comment{
+        font-size: 16px;
+        border: none;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+      }
       .comment-user-profile{
         float: left;
         box-sizing: border-box;

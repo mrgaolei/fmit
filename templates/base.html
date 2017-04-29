@@ -43,7 +43,9 @@
       {% endblock %}
     </div>
   </div>
-  <div id="pageComment" class="page out" data-onpagefirstinto="home" data-animationstart="start">
+  <div id="pageComment" class="page out" 
+    data-callback="callback" 
+    data-fallback="fallback">
     <div class="content">
       <div class="comment-header">
       <a href="#pageHome" data-rel="back">
@@ -82,5 +84,6 @@
 <!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.js"></script> -->
 <script src="{% static "news/js/mobilebone.js" %}"></script>
 <script src="{% static "news/js/main.js" %}"></script>
+<script src="{% static "news/js/comments.js" %}"></script>
 </body>
 </html>

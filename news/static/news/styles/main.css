@@ -191,6 +191,12 @@ ul, li {
     position: relative;
     border-bottom: 1px solid rgba(222, 222, 222, 0.6);
     padding: 15px 0; }
+    #pageComment ul.comment li.no-comment {
+      font-size: 16px;
+      border: none;
+      height: 100px;
+      line-height: 100px;
+      text-align: center; }
     #pageComment ul.comment li .comment-user-profile {
       float: left;
       box-sizing: border-box; }
