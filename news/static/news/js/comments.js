@@ -156,14 +156,21 @@ document.addEventListener('DOMContentLoaded',function(){
 	    	
 	    },
 	    callback: function(pageInto,pageOut,options){
+	    	// console.log(options.target.querySelector('.article-title').innerHTML);
 	    	if(pageInto && options && options.target){
+	    		var commentId = options.target.id,
+	    		commentTitle = options.target.querySelector('.article-title').innerHTML;
 	    		pageInto.setAttribute('data-id',options.target.id);
+	    		pageInto.querySelector('.comment-title').innerHTML = commentTitle;
     			getComments(options.target.id);
-    			window.localStorage.setItem('commentId',options.target.id);
+    			window.localStorage.setItem('commentId',commentId);
+    			window.localStorage.setItem('commentTitle',commentTitle)
 	    	}else{
-	    		var id = window.localStorage.getItem('commentId');
-	    		pageInto.setAttribute('data-id',id);
-    			getComments(id);
+	    		var commentId = window.localStorage.getItem('commentId'),
+	    			commentTitle = window.localStorage.getItem('commentTitle');
+	    		pageInto.setAttribute('data-id',commentId);
+	    		pageInto.querySelector('.comment-title').innerHTML = commentTitle;
+    			getComments(commentId);
 	    	}
 	    },
 	    fallback: function(pageInto,pageOut,options){
