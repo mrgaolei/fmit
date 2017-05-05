@@ -1,6 +1,7 @@
 # coding=UTF-8
 from datetime import datetime
 
+from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
 from django.db import transaction
@@ -11,8 +12,8 @@ from .models import THIRDAUTH_CHOICES, WEIBO, QQ
 
 
 def _create_client(request):
-    return APIClient(3029223458,
-                     '9183d1ae117f5cf5a2d03d029fe1f0c1',
+    return APIClient(settings.WEIBO_APP_KEY,
+                     settings.WEIBO_APPSECRET,
                      request.build_absolute_uri(reverse('audience:auth_callback', args=(WEIBO,))))
 
 
@@ -38,7 +39,7 @@ def auth_callback(request, auth_type):
     else:
         user = None
     login(request, user)
-    return redirect(reverse('news:news_list_page', args=(1,)))
+    return redirect('/')
 
 
 @transaction.atomic()
@@ -52,8 +53,10 @@ def cb_weibo(request):
     access_token, expires_in, uid = r.access_token, r.expires_in, r.uid
     client.set_access_token(access_token, expires_in)
     u = client.users.show.get(uid=uid)
+    print u
     user = authenticate(auth_type=WEIBO, auth_uid=uid, access_token=access_token,
-                        screen_name=u.screen_name, expires_in=datetime.fromtimestamp(expires_in))
+                        screen_name=u.screen_name, avatar=u.avatar_large,
+                        expires_in=datetime.fromtimestamp(expires_in))
     return user
 
 

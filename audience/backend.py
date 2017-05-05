@@ -16,7 +16,7 @@ def create_user_by_username(username, email=None):
 
 class ThirdAuthBackend(object):
 
-    def authenticate(self, auth_type, auth_uid, access_token, screen_name, expires_in=None):
+    def authenticate(self, auth_type, auth_uid, access_token, screen_name, avatar=None, expires_in=None):
         try:
             profile = Profile.objects.get(auth_type=auth_type, auth_uid=auth_uid)
             user = profile.user
@@ -25,6 +25,7 @@ class ThirdAuthBackend(object):
             profile = Profile(user=user, auth_type=auth_type, auth_uid=auth_uid, screen_name=screen_name)
 
         profile.access_token = access_token
+        profile.avatar_url = avatar
         if expires_in:
             profile.expires_in = expires_in
         profile.save()

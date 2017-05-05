@@ -18,6 +18,7 @@ class Profile(models.Model):
     screen_name = models.CharField(u"昵称", max_length=255)
     access_token = models.CharField("access_token", max_length=255)
     expires_in = models.DateTimeField(u"token过期")
+    avatar_url = models.URLField(u"头像", blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
