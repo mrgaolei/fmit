@@ -4,10 +4,10 @@ from django.conf import settings
 
 # Create your models here.
 WEIBO = 1
-WEIXIN = 2
+QQ = 2
 THIRDAUTH_CHOICES = (
     (WEIBO, u'微博'),
-    (WEIXIN, u'微信'),
+    (QQ, u'QQ'),
 )
 
 

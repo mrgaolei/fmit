@@ -7,7 +7,7 @@ from django.db import transaction
 from django.shortcuts import redirect
 from django.shortcuts import render
 from weibo import APIClient, APIError
-from .models import THIRDAUTH_CHOICES, WEIBO, WEIXIN
+from .models import THIRDAUTH_CHOICES, WEIBO, QQ
 
 
 def _create_client(request):
@@ -25,7 +25,7 @@ def index(request):
 def auth_redirect(request, auth_type):
     if int(auth_type) == WEIBO:
         client = _create_client(request)
-    elif int(auth_type) == WEIXIN:
+    elif int(auth_type) == QQ:
         raise Exception()
     return redirect(client.get_authorize_url())
 
@@ -33,8 +33,8 @@ def auth_redirect(request, auth_type):
 def auth_callback(request, auth_type):
     if int(auth_type) == WEIBO:
         user = cb_weibo(request)
-    elif int(auth_type) == WEIXIN:
-        user = cb_weixin(request)
+    elif int(auth_type) == QQ:
+        user = cb_qq(request)
     else:
         user = None
     login(request, user)
@@ -57,5 +57,5 @@ def cb_weibo(request):
     return user
 
 
-def cb_weixin(request):
+def cb_qq(request):
     return ""

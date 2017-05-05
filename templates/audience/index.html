@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <ul>
 {% for third in third_auth %}
-<li><a href="{% url 'audience:auth_redirect' auth_type=third|first %}">{{ third|last }}</a></li>
+<li><a href="{% url 'audience:auth_redirect' auth_type=third|first %}">
+    <img src="{% static "" %}audience/images/oauth_logo_{{ third|first }}.png" alt="{{ third|last }}" />
+</a></li>
 {% endfor %}
 </ul>
 
