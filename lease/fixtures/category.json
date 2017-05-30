@@ -1,0 +1,66 @@
+[
+    {
+        "model": "lease.category",
+        "pk": "camera",
+        "fields": {
+            "name": "\u76f8\u673a"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "drone",
+        "fields": {
+            "name": "\u65e0\u4eba\u673a"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "game-console",
+        "fields": {
+            "name": "\u6e38\u620f\u673a"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "headset",
+        "fields": {
+            "name": "\u8033\u673a"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "macbook",
+        "fields": {
+            "name": "MacBook"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "mobile",
+        "fields": {
+            "name": "\u624b\u673a"
+        }
+    },
+    {
+        "model": "lease.category",
+        "pk": "vr",
+        "fields": {
+            "name": "VR"
+        }
+    },
+    {
+        "model": "lease.product",
+        "pk": "x-t1",
+        "fields": {
+            "name": "\u5bcc\u58ebX-T1",
+            "official_web": "http://www.fujifilm.com.cn/products/digital_cameras/x/fujifilm_x_t1/",
+            "picture": "lease_product/x-t1.jpg",
+            "category": "camera",
+            "origin_price": "6888.00",
+            "pledge_price": "6200.00",
+            "price_per_day": "59.00",
+            "created": "2017-05-30T03:18:09.869Z",
+            "updated": "2017-05-30T13:16:28.210Z"
+        }
+    }
+]

@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'audience',
     'news',
+    'lease',
 )
 
 MIDDLEWARE_CLASSES = (
