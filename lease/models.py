@@ -64,7 +64,7 @@ class Stock(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return self.product.name
+        return u"%s %s" % (self.product.name, self.sn)
 
     class Meta:
         verbose_name = u"库存"

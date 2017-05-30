@@ -49,6 +49,8 @@ class OrderAdmin(admin.ModelAdmin):
         return queryset
 
     def get_readonly_fields(self, request, obj=None):
+        if not request.user.is_superuser:
+            return [f.name for f in self.model._meta.fields]
         if obj:
             return ['stock']
         else:
