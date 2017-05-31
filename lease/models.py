@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from tinymce.models import HTMLField
 
@@ -60,6 +61,7 @@ class Stock(models.Model):
     product = models.ForeignKey(Product, related_name='stocks')
     sn = models.CharField(u"序列号", max_length=100)
     fineness = models.SmallIntegerField(u"成色", choices=STOCK_FINENESS, default=STOCK_FINENESS_99, db_index=True)
+    in_use = models.BooleanField(u"使用中", default=False, editable=False, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -79,7 +81,7 @@ class BaseAddress(models.Model):
     city = models.CharField(max_length=120)
     district = models.CharField(max_length=120, blank=True)
     address = models.CharField(max_length=200)
-    postcode = models.CharField(max_length=20)
+    postcode = models.CharField(max_length=20, blank=True)
     tel = models.CharField(max_length=40, blank=True)
     mobile = models.CharField(max_length=11, blank=True)
     email = models.EmailField(blank=True)
@@ -88,6 +90,12 @@ class BaseAddress(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def clean(self):
+        if not self.tel and not self.mobile:
+            raise ValidationError({
+                'mobile': ValidationError(u"手机固话必须填写其一"),
+            })
 
     class Meta:
         abstract = True
@@ -114,7 +122,7 @@ class Order(models.Model):
     )
     sn = models.BigIntegerField(u"订单编号", editable=False, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='orders', editable=False)
-    stock = models.ForeignKey(Stock, related_name='orders')
+    stock = models.ForeignKey(Stock, related_name='orders', limit_choices_to={'in_use': False})
     status = models.SmallIntegerField(u"状态", choices=ORDER_STATUS, default=ORDER_STATUS_NEW, db_index=True)
     payables = models.DecimalField(u"应付", max_digits=10, decimal_places=2)
     amount = models.DecimalField(u"实付", max_digits=10, decimal_places=2, default=0)
