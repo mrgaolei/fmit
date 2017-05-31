@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^working-mac/(?P<slug>.*)/$', views.MacSkillDetail.as_view(), name='working-mac'),
     url(r'^audience/', include('audience.urls', namespace='audience')),
+    url(r'^zu/', include('lease.urls', namespace='lease')),
 
     url(r'^comments/', include('django_comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
