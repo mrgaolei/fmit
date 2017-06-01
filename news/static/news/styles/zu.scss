@@ -1,0 +1,130 @@
+//@import "_bootstrap.scss";
+@import 'mixin/base.scss';
+
+.clearfix{
+  @include clearfix;
+}
+
+html{
+  font-size: 42.6667px;
+  -webkit-text-size-adjust: none;
+  font-family: 'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif;
+  height: 100%;
+}
+
+body {
+  padding-bottom: 20px;
+  margin: 0;
+  color: #404040;
+  height: 100%;
+  
+  header.logo{
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    max-width: 740px;
+    margin: 0 auto 5px;
+    box-shadow:0 3px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: #006834;
+    height: 107px;
+    overflow: hidden;
+    span{
+      font-size: 90px;
+      display: inline-block;
+      vertical-align: -70px;
+      color: rgb(197,170,52);
+      .i{
+        display: inline-block;
+        width: 8px;
+        height: 55px;
+        margin: 0 15px;
+        background: rgb(197,170,52);
+        position: relative;
+        vertical-align: 5px;
+        &:after{
+          content:'';
+          position: absolute;
+          top: -19px;
+          left: -4px;
+          width: 5px;
+          height: 5px;
+          background: #006834;
+          border: 6px solid rgb(197,170,52);
+          border-radius: 50%;
+        }
+        &:before{
+          content:'';
+          position: absolute;
+          top: -28px;
+          left: -29px;
+          width: 60px;
+          height: 90px;
+          background: transparent;
+          border-width: 3px;
+          border-style: solid;
+          border-color:  rgb(197,170,52) transparent transparent transparent;
+          border-radius: 50%;
+        }
+        em{
+          position: absolute;
+          top: -36px;
+          left: -39px;
+          width: 80px;
+          height: 110px;
+          background: transparent;
+          border-width: 3px;
+          border-style: solid;
+          border-color:  rgb(197,170,52) transparent transparent transparent;
+          border-radius: 50%;
+          &:after{
+            content:'';
+            position: absolute;
+            top: -12px;
+            left: -13px;
+            width: 100px;
+            height: 130px;
+            background: transparent;
+            border-width: 3px;
+            border-style: solid;
+            border-color:  rgb(197,170,52) transparent transparent transparent;
+            border-radius: 60%;
+          } 
+        }
+      }
+    }
+  }
+}
+
+
+h1,h2,h3,h4,h5,h6,ul,li,p{
+    margin: 0;
+    color: #404040;
+}
+h1{
+    font-size: .34em;
+    padding: .5em 1em;
+}
+
+ul ,li{
+    list-style: none;
+    padding: 0;
+}
+
+.content-wrap{
+    padding: 10px;
+    position: absolute;
+    top: 107px;
+    overflow: auto;
+    left: 0;
+    right: 0;
+    bottom:0;
+    -webkit-overflow-scrolling: touch;
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.zu-module ul{
+  display: flex;
+}

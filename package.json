@@ -1,8 +1,28 @@
 {
   "name": "fmit3",
   "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-svgstore": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "description": "``` mysql.server start source venv/bin/activate pip install -r requirements.txt ./manage.py migrate ./manage.py runserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "fmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@fmit.cn:fmit3.git"
+  },
+  "keywords": [
+    "fmit"
+  ],
+  "author": "mrgaolei/jianqing",
+  "license": "ISC"
 }
