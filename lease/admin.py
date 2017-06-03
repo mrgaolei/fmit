@@ -50,7 +50,10 @@ class OrderAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if not request.user.is_superuser:
-            return [f.name for f in self.model._meta.fields]
+            fields = [f.name for f in self.model._meta.fields]
+            if obj.status == Order.ORDER_STATUS_RECEIVED:
+                fields.remove('tracking_backward')
+            return fields
         if obj:
             return ['stock']
         else:

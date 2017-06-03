@@ -59,6 +59,7 @@ class Stock(models.Model):
         (STOCK_FINENESS_99, u"99新"),
     )
     product = models.ForeignKey(Product, related_name='stocks')
+    attr = models.CharField(u"型号", max_length=100, blank=True, default='')
     sn = models.CharField(u"序列号", max_length=100)
     fineness = models.SmallIntegerField(u"成色", choices=STOCK_FINENESS, default=STOCK_FINENESS_99, db_index=True)
     in_use = models.BooleanField(u"使用中", default=False, editable=False, db_index=True)
@@ -66,7 +67,7 @@ class Stock(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return u"%s %s" % (self.product.name, self.sn)
+        return u"%s %s [%s]" % (self.attr, self.product.name, self.sn)
 
     class Meta:
         verbose_name = u"库存"
@@ -122,10 +123,12 @@ class Order(models.Model):
     )
     sn = models.BigIntegerField(u"订单编号", editable=False, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='orders', editable=False)
-    stock = models.ForeignKey(Stock, related_name='orders', limit_choices_to={'in_use': False})
+    stock = models.ForeignKey(Stock, related_name='orders')
     status = models.SmallIntegerField(u"状态", choices=ORDER_STATUS, default=ORDER_STATUS_NEW, db_index=True)
     payables = models.DecimalField(u"应付", max_digits=10, decimal_places=2)
     amount = models.DecimalField(u"实付", max_digits=10, decimal_places=2, default=0)
+    start_date = models.DateField(u"开始使用日")
+    end_date = models.DateField(u"归还日")
     tracking_forward = models.SlugField(u"寄出运单号", blank=True)
     tracking_backward = models.SlugField(u"寄回运单号", blank=True)
     created = models.DateTimeField(auto_now_add=True)
