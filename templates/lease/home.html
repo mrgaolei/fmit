@@ -31,33 +31,17 @@
             <!-- 商品列表 -->
             <div class="zu-list">
                 <ul>
+                    {% for p in products %}
                     <li>
                         <dl>
-                            <dt>product title</dt>
-                            <dd><img src="" alt="" /></dd>
-                            <dd>原价</dd>
-                            <dd>押金</dd>
-                            <dd>日租金</dd>
+                            <dt>{{ p.name }}</dt>
+                            <dd><img src="{{ p.picture.url }}" alt="{{ p.name }}" /></dd>
+                            <dd>原价：{{ p.origin_price }}</dd>
+                            <dd>押金：{{ p.pledge_price }}</dd>
+                            <dd>日租金：{{ p.price_per_day }}</dd>
                         </dl>
                     </li>
-                    <li>
-                        <dl>
-                            <dt>product title</dt>
-                            <dd><img src="" alt="" /></dd>
-                            <dd>原价</dd>
-                            <dd>押金</dd>
-                            <dd>日租金</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt>product title</dt>
-                            <dd><img src="" alt="" /></dd>
-                            <dd>原价</dd>
-                            <dd>押金</dd>
-                            <dd>日租金</dd>
-                        </dl>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

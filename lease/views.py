@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from lease.models import Stock
+from lease.models import Product
 
 
 def home(request):
-    stocks = Stock.objects.select_related('product').all()
+    products = Product.objects.all()
     return render(request, 'lease/home.html', {
-        'stocks': stocks
+        'products': products
     })
