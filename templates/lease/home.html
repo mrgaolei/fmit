@@ -25,9 +25,9 @@
                     <li>箱说全（为了方便您更深入的了解商品，我们提供邮寄原厂所有附件服务。需要额外费用）</li>
                 </ul>
             </div>
-            <div class="zu-list-title">
+            <!-- div class="zu-list-title">
                 <h2>无人机火爆租赁中</h2>
-            </div>
+            </div -->
             <!-- 商品列表 -->
             <div class="zu-list">
                 <ul>
@@ -39,6 +39,7 @@
                             <dd>原价：{{ p.origin_price }}</dd>
                             <dd>押金：{{ p.pledge_price }}</dd>
                             <dd>日租金：{{ p.price_per_day }}</dd>
+                            <dd><a href="{% url 'lease:lease_detail' p.slug %}">查看租赁详情</a></dd>
                         </dl>
                     </li>
                     {% endfor %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="../static/news/styles/zu.css"/>
+{% endblock %}
+{% block content %}
+    <div class="content-wrap">
+    <h2>{{ object.name }}</h2>
+    <ul>
+        <li>原价：{{ object.origin_price }}</li>
+        <li>押金：{{ object.pledge_price }}</li>
+        <li>日租金：{{ object.price_per_day }}</li>
+    </ul>
+        <h3>可用日期</h3>
+        <!-- 这里会有一个日期列表，显示哪天可用 -->
+    <div>{{ object.detail.description|safe }}</div>
+    <button>下单</button>
+    </div>
+{% endblock %}
