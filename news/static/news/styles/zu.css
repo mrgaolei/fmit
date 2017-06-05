@@ -101,15 +101,38 @@ ul, li {
 .content-wrap {
   padding: 10px;
   position: absolute;
-  top: 107px;
+  top: 0;
   overflow: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
   -webkit-overflow-scrolling: touch;
   max-width: 740px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  background-color: #eceff1; }
+  .content-wrap h2 {
+    text-align: center;
+    font-family: 'Roboto Slab',Roboto,Noto,sans-serif;
+    line-height: 38px;
+    margin: 10px 0; }
+    .content-wrap h2.title-small {
+      font-size: 20px; }
+    .content-wrap h2.title-big {
+      font-size: 28px; }
+  .content-wrap .zu-guide {
+    padding: 40px 20px; }
+    .content-wrap .zu-guide ul li {
+      font-size: 16px;
+      color: #696969;
+      list-style: square inside;
+      line-height: 2; }
+    .content-wrap .zu-guide.bottom {
+      background-color: #263238; }
+      .content-wrap .zu-guide.bottom h2 {
+        color: #fff; }
+      .content-wrap .zu-guide.bottom ul li {
+        color: #696969; }
 
 .zu-module ul {
   display: flex; }
