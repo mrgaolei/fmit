@@ -37,11 +37,13 @@
                     <li>
                         <dl>
                             <dt>{{ p.name }}</dt>
-                            <dd><img src="{{ p.picture.url }}" alt="{{ p.name }}" /></dd>
-                            <dd>原价：{{ p.origin_price }}</dd>
-                            <dd>押金：{{ p.pledge_price }}</dd>
-                            <dd>日租金：{{ p.price_per_day }}</dd>
-                            <dd><a href="{% url 'lease:lease_detail' p.slug %}">查看租赁详情</a></dd>
+                            <dd class="img"><img src="{{ p.picture.url }}" alt="{{ p.name }}" /></dd>
+                            <dd class="rent-price">日租金：{{ p.price_per_day }}</dd>
+                            <dd class="origin-price">
+                                <span>原价：{{ p.origin_price }}</span>
+                                <span>押金：{{ p.pledge_price }}</span>
+                            </dd>                            
+                            <dd class="detail"><a href="{% url 'lease:lease_detail' p.slug %}">查看租赁详情</a></dd>
                         </dl>
                     </li>
                     {% endfor %}

@@ -117,16 +117,16 @@ ul ,li{
     position: absolute;
     top: 0;
     overflow: auto;
-    left: -10px;
-    right: -10px;
-    bottom:-10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     -webkit-overflow-scrolling: touch;
     max-width: 740px;
     margin-left: auto;
     margin-right: auto;
     background-color:#eceff1;
     h2{
-      
+      font-size: 26px;
       text-align: center;
       font-family: 'Roboto Slab',Roboto,Noto,sans-serif;
       line-height: 38px;
@@ -148,6 +148,7 @@ ul ,li{
       }
       &.bottom{
         background-color:#263238;
+        box-shadow: 10px 0 0 0 #263238,-10px 0 0 0 #263238;
         h2{
           color: #fff;
         }
@@ -156,8 +157,99 @@ ul ,li{
         }
       }
     }
+    .zu-list{
+      dl{
+        dt{
+          font-size: 22px;
+          text-align: center;
+          padding: 10px 0;
+        }
+        dd{
+          margin: 0;
+          &.img{
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+            img{
+              width: 100%;
+            }
+          }
+          &.rent-price{
+            color: #f23030;
+            font-family: 'Helvetica';
+            font-size: 22px;
+            margin-top: 15px;
+          }
+          &.origin-price{
+            font-family: 'Helvetica';
+            font-size: 16px;
+            overflow: hidden;
+            span{
+              float: left;
+            }
+            span:first-child{
+              margin-right: 15px;
+            }
+          }
+          &.detail{
+            padding: 10px;
+            // text-align: center;
+            a{
+              font-size: 16px;
+              color: #eee;
+              background-color: rgba(0,104,52,.7);
+              border-radius: 3px;
+              height: 36px;
+              line-height: 36px;
+              padding: 0 28px;
+              display: inline-block;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+  }
+}
+.content-wrap.rent-detail{
+  .order{
+    text-align: center;
+    button{
+      font-size: 18px;
+      color: #eee;
+      background-color: rgba(0,104,52,.8);
+      border-radius: 5px;
+      height: 46px;
+      line-height: 46px;
+      padding: 0 48px;
+      display: inline-block;
+      border: none;
+      box-shadow: inset 0 -3px 0 0 rgba(0,0,0,.3);
+    }
+  }
+  dl{
+    dt{
+      color: #f23030;
+      font-family: 'Helvetica';
+      font-size: 22px;
+      margin-top: 15px;
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    dd{
+      color: #464646;
+      font-size: 18px;
+      margin-left: 20px;
+      line-height: 1.2;
+    }
+  }
+  .detail{
+    font-size: 13px;
+    color: #666;
+  }
+  h3{
+    font-size: 16px;
+    color: gray;
+    margin: 15px;
+  }
 }
 
-.zu-module ul{
-  display: flex;
-}
