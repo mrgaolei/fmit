@@ -5,17 +5,25 @@
 {% endblock %}
 {% block content %}
     <div class="content-wrap rent-detail">
-    <h2>{{ object.name }}</h2>
-    <dl>
-        <dt>原价：{{ object.origin_price }}</dt>
-        <dd>押金：{{ object.pledge_price }}</dd>
-        <dd>日租金：{{ object.price_per_day }}</dd>
-    </dl>
-    <h3>可用日期</h3>
-        <!-- 这里会有一个日期列表，显示哪天可用 -->
-    <div class="detail">{{ object.detail.description|safe }}</div>
-    <div class="order">
-        <button>下单</button>
-    </div>
+        <div class="back">
+          <a href="#pageHome" data-rel="back">
+            <svg class="">
+              <use xlink:href="#icon-chevron-thin-left"></use>
+            </svg>
+            返回
+          </a>
+        </div>
+        <h2>{{ object.name }}</h2>
+        <dl>
+            <dt>原价：{{ object.origin_price }}</dt>
+            <dd>押金：{{ object.pledge_price }}</dd>
+            <dd>日租金：{{ object.price_per_day }}</dd>
+        </dl>
+        <h3>可用日期</h3>
+            <!-- 这里会有一个日期列表，显示哪天可用 -->
+        <div class="detail">{{ object.detail.description|safe }}</div>
+        <div class="order">
+            <button>下单</button>
+        </div>
     </div>
 {% endblock %}

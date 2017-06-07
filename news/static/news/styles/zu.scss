@@ -26,7 +26,7 @@ body {
     z-index: 1;
     max-width: 740px;
     margin: 0 auto 5px;
-    box-shadow:0 3px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow:10px 0 0 0 #006834, -10px 0 0 0 #006834;
     background-color: #006834;
     height: 107px;
     overflow: hidden;
@@ -175,7 +175,7 @@ ul ,li{
             }
           }
           &.rent-price{
-            color: #f23030;
+            color: #a52a2a;
             font-family: 'Helvetica';
             font-size: 22px;
             margin-top: 15px;
@@ -189,6 +189,7 @@ ul ,li{
             }
             span:first-child{
               margin-right: 15px;
+              text-decoration: line-through;
             }
           }
           &.detail{
@@ -211,6 +212,19 @@ ul ,li{
   }
 }
 .content-wrap.rent-detail{
+  .back{
+    a{
+      color: gray;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    svg{
+      width: 16px;
+      height: 16px;
+      fill: gray;
+      vertical-align: middle;
+    }
+  }
   .order{
     text-align: center;
     button{
