@@ -2,14 +2,23 @@
 
 {% block content %}
 
-<form action="{% url 'login' %}" method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">登录</button>
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
-
-<ul>
-    <li><a href="{% url 'audience:auth_redirect' auth_type=1 %}"><img src="http://www.sinaimg.cn/blog/developer/wiki/48.png"> </a></li>
-</ul>
+<div class="login-wrap">
+	<form action="{% url 'login' %}" method="post" id="login-form">
+	{% csrf_token %}
+		<div class="form-inline">
+			<label for="id_username">用户名:</label> 
+			<input type="text" name="username" autofocus="" required="" id="id_username" maxlength="254" placeholder="用户名">
+		</div>
+		<div class="form-inline">
+			<label for="id_password">密码:</label> 
+			<input type="password" name="password" required="" id="id_password" placeholder="密码">
+		</div>
+	<button type="submit">登录</button>
+	<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+	<p class="title">其他登陆方式</p>
+	<ul class="login-other">
+	    <li><a href="{% url 'audience:auth_redirect' auth_type=1 %}"><img src="http://www.sinaimg.cn/blog/developer/wiki/48.png"> </a></li>
+	</ul>
+</div>
 {% endblock %}

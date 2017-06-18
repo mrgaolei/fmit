@@ -335,6 +335,89 @@ section.home{
     }
   }
 }
+.login-wrap{
+  p.title{
+    padding: 5px 0;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    padding-bottom: 5%;
+  }
+}
+form#login-form{
+  position: relative;
+  padding: 15% 15% 5% 15%;
+  &:after{
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #3c4c55;
+    z-index: -1;
+  }
+  .form-inline{
+    background-color: #fff;
+    font-size: 0;
+    margin-bottom: 15px;
+    label{
+      display: none;
+    }
+    input{
+      height: 50px;
+      padding: 5px;
+      width: 100%;
+      border-radius: 0;
+      display: inline-block;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      border-left: 5px solid #fff;
+      outline: none;
+      box-sizing: border-box;
+      font-size: 28px;
+      text-indent: 5px;
+      transition: all ease .1s;
+      color: rgba(0,0,0,.6);
+      &:focus{
+        border-left: 5px solid rgba(0,104,52,.5);
+      }
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: rgba(0,0,0,.2);
+      font-size: 18px;
+      line-height: 2;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: rgba(0,0,0,.2);
+      font-size: 18px;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: rgba(0,0,0,.2);
+      font-size: 18px;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: rgba(0,0,0,.2);
+      font-size: 18px;
+    }
+  }
+  button[type=submit]{
+    background-color:#40a46f;
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+  }
+}
+.login-other{
+  text-align: center;
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), not all, not all{
   .block {
       border-top-width: 1px;
